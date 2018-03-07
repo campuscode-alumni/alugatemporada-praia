@@ -32,6 +32,17 @@ feature 'show last 10 Properties' do
     expect(page).not_to have_css('h3', text: apartamento.title)
   end
 
+  scenario 'and see a short description of one property' do
+    create_prop('Casa no campo')
+
+    visit root_path
+
+    expect(page).to have_css('h3', text: 'Casa no campo')
+    expect(page).to have_css('p', text: 100.50)
+    expect(page).to have_css('p', text: 10)
+    expect(page).to have_css('p', text: 'Mongagua')
+  end
+
   def create_prop(title)
     Property.create(title: title,
       maximum_guests: 10, minimum_rent: 3, maximum_rent: 12, daily_rate: 100.50,
