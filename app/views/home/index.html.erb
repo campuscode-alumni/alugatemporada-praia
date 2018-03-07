@@ -1,0 +1,5 @@
+<%= form_tag "/properties/search/", method: "get" do%>
+  <%= label_tag :location, "Localização" %>
+  <%= select_tag(:location, options_for_select(@locations))%>
+  <%= submit_tag "Buscar"%>
+<% end %>
