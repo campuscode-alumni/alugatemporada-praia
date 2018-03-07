@@ -38,8 +38,8 @@ feature 'show last 10 Properties' do
     visit root_path
 
     expect(page).to have_css('h3', text: 'Casa no campo')
-    expect(page).to have_css('p', text: 100.50)
-    expect(page).to have_css('p', text: 10)
+    expect(page).to have_css('p', text: '100.5 por dia')
+    expect(page).to have_css('p', text: 'Acomoda 10 pessoas')
     expect(page).to have_css('p', text: 'Mongagua')
 
     expect(page).not_to have_css('h3', text: 'Não encontramos nenhum imóvel cadastrado')

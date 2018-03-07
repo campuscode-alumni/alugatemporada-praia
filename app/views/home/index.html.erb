@@ -4,8 +4,8 @@
 <% else %>
   <% @properties.each do | property | %>
     <h3><%= property.title %></h3>
-    <p><%= property.daily_rate %></p>
-    <p><%= property.maximum_guests %></p>
+    <p><%= property.daily_rate %> por dia</p>
+    <p>Acomoda <%= property.maximum_guests %> pessoas</p>
     <p><%= property.property_location %></p>
   <% end %>
 <% end %>
