@@ -1,0 +1,11 @@
+<h1>Bem vindo ao Aluga Temporada</h1>
+
+
+<% @properties.each do | property | %>
+
+<h3><%= property.title %></h3>
+<h3><%= property.daily_rate %></h3>
+<h3><%= property.maximum_guests %></h3>
+<h3><%= property.property_location %></h3>
+
+<% end %>
