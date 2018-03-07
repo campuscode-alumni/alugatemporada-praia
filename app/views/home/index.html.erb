@@ -1,11 +1,11 @@
 <h1>Bem vindo ao Aluga Temporada</h1>
-<h3><%= flash[:notice] %></h3>
-
-<% @properties.each do | property | %>
-
-<h3><%= property.title %></h3>
-<p><%= property.daily_rate %></p>
-<p><%= property.maximum_guests %></p>
-<p><%= property.property_location %></p>
-
+<% if @properties.empty? %>
+  <h3><%= flash[:notice] %></h3>
+<% else %>
+  <% @properties.each do | property | %>
+    <h3><%= property.title %></h3>
+    <p><%= property.daily_rate %></p>
+    <p><%= property.maximum_guests %></p>
+    <p><%= property.property_location %></p>
+  <% end %>
 <% end %>

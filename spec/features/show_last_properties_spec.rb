@@ -41,6 +41,8 @@ feature 'show last 10 Properties' do
     expect(page).to have_css('p', text: 100.50)
     expect(page).to have_css('p', text: 10)
     expect(page).to have_css('p', text: 'Mongagua')
+
+    expect(page).not_to have_css('h3', text: 'Não encontramos nenhum imóvel cadastrado')
   end
 
   scenario 'and dont find any property' do
