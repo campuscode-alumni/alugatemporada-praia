@@ -43,6 +43,12 @@ feature 'show last 10 Properties' do
     expect(page).to have_css('p', text: 'Mongagua')
   end
 
+  scenario 'and dont find any property' do
+    visit root_path
+
+    expect(page).to have_css('h3', text: 'Não encontramos nenhum imóvel cadastrado')
+  end
+
   def create_prop(title)
     Property.create(title: title,
       maximum_guests: 10, minimum_rent: 3, maximum_rent: 12, daily_rate: 100.50,
