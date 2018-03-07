@@ -9,3 +9,9 @@
     <p><%= property.property_location %></p>
   <% end %>
 <% end %>
+
+<%= form_tag search_properties_path, method: "get" do%>
+  <%= label_tag :location, "Localização" %>
+  <%= select_tag(:location, options_for_select(@locations))%>
+  <%= submit_tag "Buscar"%>
+<% end %>
