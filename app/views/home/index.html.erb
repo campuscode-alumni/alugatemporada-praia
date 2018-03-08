@@ -1,4 +1,9 @@
 <h1>Bem vindo ao Aluga Temporada</h1>
+
+<div>
+  <%= link_to 'Meus imóveis', my_properties_properties_path %>
+</div>
+
 <% if @properties.empty? %>
   <h3><%= flash[:notice] %></h3>
 <% else %>

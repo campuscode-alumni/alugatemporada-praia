@@ -10,4 +10,9 @@ class PropertiesController < ApplicationController
 
     @properties = Property.where('property_location = ? ', @location)
   end
+
+  def my_properties
+    @properties = Property.all
+  end
+
 end
