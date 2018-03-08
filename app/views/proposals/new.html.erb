@@ -1,0 +1,46 @@
+<%= form_for @proposal do |f| %>
+  <div>
+    <%= f.label :name, 'Nome:' %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :email, 'E-mail:' %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :phone, 'Telefone:' %>
+    <%= f.text_field :phone %>
+  </div>
+  <div>
+    <%= f.label :rent_purpose, 'Finalidade:' %>
+    <%= f.text_field :rent_purpose %>
+  </div>
+  <div>
+    <%= f.label :maximum_guests, 'Quantidade de hóspedes:' %>
+    <%= f.text_field :maximum_guests %>
+  </div>
+  <div>
+    <%= f.label :start_date, 'Data de entrada:' %>
+    <%= f.text_field :start_date %>
+  </div>
+  <div>
+    <%= f.label :end_date, 'Data de saída:' %>
+    <%= f.text_field :end_date %>
+  </div>
+  <div>
+    <%= f.radio_button(:petfriendly, true) %>
+    <%= f.label(:petfriendly, "Pretendo levar pets") %>
+    <%= f.radio_button(:petfriendly, false) %>
+    <%= f.label(:petfriendly, "Não pretendo levar pets") %>
+  </div>
+  <div>
+    <%= f.radio_button(:smoking_allowed, true) %>
+    <%= f.label(:smoking_allowed, "Há fumantes entre os hóspedes") %>
+    <%= f.radio_button(:smoking_allowed, false) %>
+    <%= f.label(:smoking_allowed, "Não há fumantes entre os hóspedes") %>
+  </div>
+  <div>
+    <%= f.label :proposal_details, 'Outras informações:' %>
+    <%= f.text_field :proposal_details %>
+  </div>
+<% end %>

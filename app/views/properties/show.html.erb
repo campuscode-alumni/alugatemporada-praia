@@ -10,3 +10,5 @@
 <p> Número máximo de hóspedes: <%= @property.maximum_guests %></p>
 <p> Locação de <%= @property.minimum_rent %> a <%= @property.maximum_rent %> dias</p>
 <p> Valor da diária R$ <%= @property.daily_rate %></p>
+
+<%= link_to 'Envie uma proposta', new_property_proposal_path(@property) %>

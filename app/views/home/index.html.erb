@@ -3,7 +3,7 @@
   <h3><%= flash[:notice] %></h3>
 <% else %>
   <% @properties.each do | property | %>
-    <h3><%= property.title %></h3>
+    <h3><%= link_to property.title, property_path(property.id) %></h3>
     <p><%= property.daily_rate %> por dia</p>
     <p>Acomoda <%= property.maximum_guests %> pessoas</p>
     <p><%= property.property_location %></p>
