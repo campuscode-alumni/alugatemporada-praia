@@ -1,0 +1,65 @@
+<h1>Cadastro de Imóveis</h1>
+<% if flash[:notice] %>
+  <h3> <%= flash[:notice] %> </h3>
+  <% @property.errors.full_messages.each do | m | %>
+    <h4> <%= m %> </h4>
+  <% end %>
+<% end %>
+
+<%= form_for @property do |f| %>
+  <div>
+    <%= f.label :title, 'Título' %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :property_type, 'Tipo da propriedade' %>
+    <%= f.text_field :property_type %>
+  </div>
+  <div>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :property_location, 'Localização' %>
+    <%= f.text_field :property_location %>
+  </div>
+  <div>
+    <%= f.label :rent_purpose, 'Finalidade da locação' %>
+    <%= f.text_field :rent_purpose %>
+  </div>
+  <div>
+    <%= f.label :accessibility, 'Acessibilidade' %>
+    <%= f.check_box :accessibility %>
+  </div>
+  <div>
+    <%= f.label :petfriendly, 'Aceita animais' %>
+    <%= f.check_box :petfriendly %>
+  </div>
+  <div>
+    <%= f.label :smoking_allowed, 'Aceita fumantes' %>
+    <%= f.check_box :smoking_allowed %>
+  </div>
+  <div>
+    <%= f.label :total_rooms, 'Total de quartos' %>
+    <%= f.text_field :total_rooms %>
+  </div>
+  <div>
+    <%= f.label :maximum_guests, 'Número máximo de hóspedes' %>
+    <%= f.text_field :maximum_guests %>
+  </div>
+  <div>
+    <%= f.label :minimum_rent, 'Número minimo de dias para locação' %>
+    <%= f.text_field :minimum_rent %>
+  </div>
+  <div>
+    <%= f.label :maximum_rent, 'Número máximo de dias para locação' %>
+    <%= f.text_field :maximum_rent %>
+  </div>
+  <div>
+    <%= f.label :daily_rate, 'Valor da diária' %>
+    <%= f.text_field :daily_rate %>
+  </div>
+  <div>
+    <%= f.submit 'Salvar' %>
+  </div>
+<% end %>

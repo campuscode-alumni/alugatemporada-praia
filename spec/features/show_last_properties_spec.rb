@@ -38,9 +38,9 @@ feature 'show last 10 Properties' do
     visit root_path
 
     expect(page).to have_css('h3', text: 'Casa no campo')
-    expect(page).to have_css('p', text: '100.5 por dia')
-    expect(page).to have_css('p', text: 'Acomoda 10 pessoas')
-    expect(page).to have_css('p', text: 'Mongagua')
+    expect(page).to have_css('p', text: '300,00 por dia')
+    expect(page).to have_css('p', text: 'Acomoda 8 pessoas')
+    expect(page).to have_css('p', text: 'Ubatuba')
 
     expect(page).not_to have_css('h3', text: 'Não encontramos nenhum imóvel cadastrado')
   end
@@ -52,8 +52,10 @@ feature 'show last 10 Properties' do
   end
 
   def create_prop(title)
-    Property.create(title: title,
-      maximum_guests: 10, minimum_rent: 3, maximum_rent: 12, daily_rate: 100.50,
-      property_location: 'Mongagua')
+    Property.create(title: title, property_type: 'casa',
+              description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Ubatuba',
+              rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
+              total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
+              daily_rate: '300.00')
   end
 end
