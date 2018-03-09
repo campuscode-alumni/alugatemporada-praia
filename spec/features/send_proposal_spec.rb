@@ -19,11 +19,12 @@ feature 'user send proposal' do
     fill_in 'Quantidade de hóspedes:', with: '5 pessoas'
     fill_in 'Data de entrada:', with: '29/04/2018'
     fill_in 'Data de saída:', with: '02/05/2018'
-    fill_in 'Pretendo levar pets?', with: 'Sim'
-    fill_in 'Fumantes?', with: 'Não'
+    check 'Pretendo levar pets'
+    uncheck 'Fumantes'
     fill_in 'Outras informações:', with: 'Procuro casa próxima à praia'
 
     click_on 'Enviar proposta'
 
+    expect(current_path).to eq(property_path(property))
   end
 end

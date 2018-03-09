@@ -1,4 +1,4 @@
-<%= form_for @proposal do |f| %>
+<%= form_for ([@property, @proposal]) do |f| %>
   <div>
     <%= f.label :name, 'Nome:' %>
     <%= f.text_field :name %>
@@ -28,19 +28,16 @@
     <%= f.text_field :end_date %>
   </div>
   <div>
-    <%= f.radio_button(:petfriendly, true) %>
+    <%= f.check_box(:petfriendly) %>
     <%= f.label(:petfriendly, "Pretendo levar pets") %>
-    <%= f.radio_button(:petfriendly, false) %>
-    <%= f.label(:petfriendly, "Não pretendo levar pets") %>
-  </div>
+      </div>
   <div>
-    <%= f.radio_button(:smoking_allowed, true) %>
-    <%= f.label(:smoking_allowed, "Há fumantes entre os hóspedes") %>
-    <%= f.radio_button(:smoking_allowed, false) %>
-    <%= f.label(:smoking_allowed, "Não há fumantes entre os hóspedes") %>
+    <%= f.check_box(:smoking_allowed) %>
+    <%= f.label(:smoking_allowed, "Fumantes") %>
   </div>
   <div>
     <%= f.label :proposal_details, 'Outras informações:' %>
     <%= f.text_field :proposal_details %>
   </div>
+  <%= f.submit 'Enviar proposta' %>
 <% end %>
