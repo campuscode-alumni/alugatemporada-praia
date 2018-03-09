@@ -2,6 +2,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find params[:id]
+    @price_ranges = @property.price_ranges
   end
 
   def search
