@@ -1,3 +1,7 @@
+<h1> Cadastrar uma proposta </h1>
+
+<%= render partial: 'shared/model_errors', locals:{ model:@proposal } %>
+
 <%= form_for ([@property, @proposal]) do |f| %>
   <div>
     <%= f.label :name, 'Nome:' %>

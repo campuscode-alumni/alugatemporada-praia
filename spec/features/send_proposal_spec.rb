@@ -27,4 +27,32 @@ feature 'user send proposal' do
 
     expect(current_path).to eq(property_path(property))
   end
+
+  scenario 'all fields are required' do
+    property = Property.create(title: 'Casa charmosa em Ubatuba', property_type: 'casa',
+            description: 'Casa nova, com quartos climatizados e wi-fi', location: 'Ubatuba',
+            rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
+            total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
+            daily_rate: '300.00')
+
+    visit root_path
+    click_on property.title
+    click_on 'Envie uma proposta'
+
+    fill_in 'Nome:', with: ''
+    fill_in 'E-mail:', with: ''
+    fill_in 'Telefone:', with: ''
+    fill_in 'Finalidade:', with: ''
+    fill_in 'Quantidade de hóspedes:', with: ''
+    fill_in 'Data de entrada:', with: ''
+    fill_in 'Data de saída:', with: ''
+    check 'Pretendo levar pets'
+    uncheck 'Fumantes'
+    fill_in 'Outras informações:', with: 'Procuro casa próxima à praia'
+
+    click_on 'Enviar proposta'
+
+    expect(page).to have_content('Você deve preencher todos os campos para enviar uma proposta') 
+  end
+
 end

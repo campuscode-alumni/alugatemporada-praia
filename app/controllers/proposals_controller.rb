@@ -14,8 +14,11 @@ class ProposalsController < ApplicationController
 
     @proposal = Proposal.new(proposal_params)
     @proposal.property = @property
-    @proposal.save
-    redirect_to property_path(@property.id)
-
+    if @proposal.save
+      redirect_to property_path(@property.id)
+    else
+      render :new
+    end
+    
   end
 end
