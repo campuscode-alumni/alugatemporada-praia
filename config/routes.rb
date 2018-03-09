@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   get '/properties/search/', to: 'properties#search', as: 'search_properties'
-  resources :properties
+  resources :properties do
+    resources :unavailable_ranges, only: [:new, :create]
+  end
 end

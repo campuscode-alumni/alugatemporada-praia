@@ -1,0 +1,2 @@
+class UnavailableRange < ApplicationRecord
+end
