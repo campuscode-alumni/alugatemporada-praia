@@ -74,7 +74,6 @@ feature 'Owner add price range' do
     click_on 'Cadastrar'
 
     #expectativa
-    expect(page).to
-    have_content("A data informada já consta cadastrada em outra temporada")
+    expect(page).to have_content("A data informada já consta cadastrada em outra temporada")
   end
 end
