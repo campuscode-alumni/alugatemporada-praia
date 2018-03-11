@@ -34,8 +34,3 @@ class PriceRangesController < ApplicationController
     end
   end
 end
-
-
-PriceRange.where('property_id = ? and
-  (start_date >= "15/02/2019" and end_date <= "15/02/2019")
-  or (start_date >= "20/02/2019" and end_date = "20/02/2019")', 1)
