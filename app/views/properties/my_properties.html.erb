@@ -1,0 +1,14 @@
+<h1>Meus imóveis</h1>
+
+<% @properties.each do |property| %>
+  <div class="property-img">
+    <img src="<%= @image %> " />
+  </div>
+  <div class="property-details">
+    <h3><%= link_to property.title, property_path(property.id) %></h3>
+    <ul>
+      <li>Diária: <%= property.daily_rate %></li>
+      <li>Máx. Hospedes: <%= property.maximum_guests %></li>
+    </ul>
+  </div>
+<% end %>

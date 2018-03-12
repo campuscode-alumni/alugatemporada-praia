@@ -2,6 +2,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find params[:id]
+    @price_ranges = @property.price_ranges
   end
 
   def search
@@ -10,6 +11,7 @@ class PropertiesController < ApplicationController
 
     @properties = Property.where('property_location = ? ', @location)
   end
+
 
   def new
     @property = Property.new
@@ -32,4 +34,10 @@ class PropertiesController < ApplicationController
       :smoking_allowed, :total_rooms, :maximum_guests, :minimum_rent,
       :maximum_rent, :daily_rate)
   end
+
+  def my_properties
+    @properties = Property.all
+  end
+
+
 end

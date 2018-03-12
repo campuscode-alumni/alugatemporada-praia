@@ -12,6 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20180309011004) do
 
+  create_table "price_ranges", force: :cascade do |t|
+    t.string "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "daily_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "property_id"
+    t.index ["property_id"], name: "index_price_ranges_on_property_id"
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string "title"
     t.integer "maximum_guests"
