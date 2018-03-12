@@ -13,24 +13,30 @@ class PriceRangesController < ApplicationController
     @start_date = price_range_params[:start_date]
     @end_date = price_range_params[:end_date]
 
-    @exist_price_range = PriceRange.where('property_id = ? and
-      (start_date <= ? or start_date >= ?) or (end_date <= ? or end_date >= ?)
-      ', 1, @start_date, @start_date, @end_date, @end_date )
-
-    if @exist_price_range.empty?
-      @price_range = PriceRange.create(price_range_params)
-      @price_range.property = @property
-      if @price_range.save
-        redirect_to property_path(@property)
-        flash[:notice] = "Temporada cadastrada com sucesso!"
-      else
-        flash[:error] = "Todos os campos devem ser preenchidos"
-        render :new
-      end
-    else
-      flash[:error] = "A data informada já consta cadastrada em outra temporada"
+    if @end_date < @start_date
+      flash[:error] = "A data fim não pode ser menor do que a data início"
       @price_range = PriceRange.new
       render :new
+    else
+      @exist_price_range = PriceRange.where('property_id = ? and
+        (start_date <= ? or start_date >= ?) or (end_date <= ? or end_date >= ?)
+        ', 1, @start_date, @start_date, @end_date, @end_date )
+
+      if @exist_price_range.empty?
+        @price_range = PriceRange.create(price_range_params)
+        @price_range.property = @property
+        if @price_range.save
+          redirect_to property_path(@property)
+          flash[:notice] = "Temporada cadastrada com sucesso!"
+        else
+          flash[:error] = "Todos os campos devem ser preenchidos"
+          render :new
+        end
+      else
+        flash[:error] = "A data informada já consta cadastrada em outra temporada"
+        @price_range = PriceRange.new
+        render :new
+      end
     end
   end
 end
