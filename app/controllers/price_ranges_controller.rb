@@ -18,9 +18,10 @@ class PriceRangesController < ApplicationController
       @price_range = PriceRange.new
       render :new
     else
-      @exist_price_range = PriceRange.where('property_id = ? and
-        (start_date <= ? or start_date >= ?) or (end_date <= ? or end_date >= ?)
-        ', 1, @start_date, @start_date, @end_date, @end_date )
+      @exist_price_range = PriceRange.where("property_id = ?
+        and ((start_date <= ? and end_date >= ?)
+        or (start_date <= ? and end_date >= ?))
+        ", @property, @start_date, @start_date, @end_date, @end_date )
 
       if @exist_price_range.empty?
         @price_range = PriceRange.create(price_range_params)
