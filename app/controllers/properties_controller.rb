@@ -39,5 +39,9 @@ class PropertiesController < ApplicationController
     @properties = Property.all
   end
 
+  def my_proposals
+    @user = current_user
+    @my_proposals = @user.proposals
+  end
 
 end

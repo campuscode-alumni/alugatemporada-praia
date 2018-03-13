@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'User view your proposals' do
   scenario 'successfully' do
     #Criação dos dados
-    user = User.create(email: 'joaoalmeida@campuscode.com.br', senha: '123456',
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
       phone: '+5511912345678')
 
     property = Property.create(title: 'Casa charmosa em Ubatuba',
@@ -14,7 +14,8 @@ feature 'User view your proposals' do
             total_rooms: '2', maximum_guests: '8', minimum_rent: '5',
             maximum_rent: '30', daily_rate: '300.00')
 
-    proposal = Proposal.create(property: property, user: user,
+    proposal = Proposal.create(property: property, user_id: user.id,
+      phone: user.phone,
       rent_purpose: 'Feriado com os amigos', maximum_guests: '6',
       start_date: '2019-12-30', end_date: '2020-01-01', petfriendly: true,
       smoking_allowed: true, proposal_details: 'Bla bla bla')
@@ -22,8 +23,8 @@ feature 'User view your proposals' do
     #Navegação
     visit root_path
     click_on 'Entrar'
-    fill_in 'email', with: user.email
-    fill_in 'senha', with: user.senha
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
     click_on 'Entrar'
     click_on 'Minhas propostas'
 

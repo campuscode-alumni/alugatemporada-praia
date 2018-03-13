@@ -3,6 +3,11 @@
 <div>
   <%= link_to 'Meus imóveis', my_properties_properties_path %>
 </div>
+<% if user_signed_in? %>
+  <%= link_to 'Minhas propostas', my_proposals_properties_path %>
+<% else  %>
+  <%= link_to 'Entrar', new_user_session_path %>
+<% end %>
 
 <% if @properties.empty? %>
   <h3><%= flash[:notice] %></h3>

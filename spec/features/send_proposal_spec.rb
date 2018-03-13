@@ -2,6 +2,9 @@ require 'rails_helper'
 
 feature 'user send proposal' do
   scenario 'open form' do
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: 'Casa charmosa em Ubatuba', property_type: 'casa',
             description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Ubatuba',
             rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
@@ -9,6 +12,10 @@ feature 'user send proposal' do
             daily_rate: '300.00')
 
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
     click_on property.title
     click_on 'Envie uma proposta'
 
@@ -29,6 +36,9 @@ feature 'user send proposal' do
   end
 
   scenario 'all fields are required' do
+    user = User.create(email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: 'Casa charmosa em Ubatuba', property_type: 'casa',
             description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Ubatuba',
             rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
@@ -36,6 +46,10 @@ feature 'user send proposal' do
             daily_rate: '300.00')
 
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
     click_on property.title
     click_on 'Envie uma proposta'
 
