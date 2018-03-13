@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309235647) do
+ActiveRecord::Schema.define(version: 20180312225656) do
 
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20180309235647) do
     t.boolean "petfriendly"
     t.boolean "smoking_allowed"
     t.boolean "accessibility"
+    t.integer "owner_id"
+    t.index ["owner_id"], name: "index_properties_on_owner_id"
   end
 
   create_table "proposals", force: :cascade do |t|

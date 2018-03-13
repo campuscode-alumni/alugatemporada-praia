@@ -1,4 +1,4 @@
-requires 'rails_helpers'
+require 'rails_helper'
 
 feature 'owner sees properties' do
   scenario 'successfully' do
@@ -19,9 +19,9 @@ feature 'owner sees properties' do
     click_on 'Meus imóveis'
 
     expect(page).to have_content 'Casa maravilhosa em Ubatuba'
-    expect(page).to have_content 'R$ 300,00'
+    expect(page).to have_content 'R$ 300,00 por dia'
     expect(page).to have_content 'Acomoda 8 pessoas'
     expect(page).to have_content 'Ubatuba'
-    
+
   end
 end

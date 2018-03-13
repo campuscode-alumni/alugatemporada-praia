@@ -12,5 +12,6 @@ class Property < ApplicationRecord
   validates :daily_rate, presence: { message: 'Você deve preencher o campo valor da diária.'}
 
   has_many :proposals
+  belongs_to :owner
 
 end

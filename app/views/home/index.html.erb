@@ -1,4 +1,7 @@
 <h1>Bem vindo ao Aluga Temporada</h1>
+
+<%= link_to 'Área do proprietário', new_owner_session_path %>
+
 <% if @properties.empty? %>
   <h3><%= flash[:notice] %></h3>
 <% else %>
@@ -15,6 +18,10 @@
   <%= label_tag :property_location, "Localização" %>
   <%= select_tag(:property_location, options_for_select(@locations))%>
   <%= submit_tag "Buscar"%>
+<% end %>
+
+<% if owner_signed_in? %>
+  <%= link_to 'Meus imóveis', my_properties_path %>
 <% end %>
 
 <%= link_to 'Registrar imóvel', new_property_path %>

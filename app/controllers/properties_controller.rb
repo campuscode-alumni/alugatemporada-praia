@@ -32,4 +32,9 @@ class PropertiesController < ApplicationController
       :smoking_allowed, :total_rooms, :maximum_guests, :minimum_rent,
       :maximum_rent, :daily_rate)
   end
+
+  def my_properties
+    @owner = current_owner
+    @my_properties = @owner.properties
+  end
 end

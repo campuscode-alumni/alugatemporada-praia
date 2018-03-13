@@ -6,8 +6,10 @@ Rails.application.routes.draw do
 
   get '/properties/search/', to: 'properties#search', as: 'search_properties'
 
+  get 'my_properties', to: 'properties#my_properties', as: 'my_properties'
+
   resources :properties do
-    resources :proposals
+        resources :proposals
   end
 
 end
