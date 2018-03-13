@@ -15,7 +15,7 @@ feature 'User view your proposals' do
             maximum_rent: '30', daily_rate: '300.00')
 
     proposal = Proposal.create(property: property, user_id: user.id,
-      phone: user.phone,
+      email: user.email, phone: user.phone,
       rent_purpose: 'Feriado com os amigos', maximum_guests: '6',
       start_date: '2019-12-30', end_date: '2020-01-01', petfriendly: true,
       smoking_allowed: true, proposal_details: 'Bla bla bla')

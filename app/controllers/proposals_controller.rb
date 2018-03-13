@@ -16,8 +16,6 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     @proposal.property = @property
     @proposal.user_id = @user.id
-    @proposal.name = @user.email
-    @proposal.email= @user.email
     @proposal.phone = @user.phone
     if @proposal.save
       redirect_to property_path(@property.id)
