@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309005943) do
+ActiveRecord::Schema.define(version: 20180312225650) do
 
   create_table "properties", force: :cascade do |t|
     t.string "title"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20180309005943) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "property_id"
+    t.index ["property_id"], name: "index_unavailable_ranges_on_property_id"
   end
 
 end

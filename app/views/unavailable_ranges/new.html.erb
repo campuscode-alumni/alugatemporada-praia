@@ -1,6 +1,27 @@
 <h1>Cadastrar Indisponíbilidade</h1>
-
+<% if @unavailable_range.errors.full_messages.each.any? %>
+  <h3> <%= flash[:notice] %> </h3>
+  <% @unavailable_range.errors.full_messages.each do |m| %>
+    <p> <%= m %> </p>
+  <% end %>
+<% end %>
 <%= form_for [@property, @unavailable_range] do |f| %>
-  <%= f.label :description %>
+<div>
+  <%= f.label :description, 'Descrição' %>
   <%= f.text_field :description %>
+</div>
+
+<div>
+  <%= f.label :start_date, 'Data inicial' %>
+  <%= f.text_field :start_date %>
+</div>
+
+<div>
+  <%= f.label :end_date, 'Data final' %>
+  <%= f.text_field :end_date %>
+</div>
+
+<div>
+  <%= f.submit 'Salvar' %>
+</div>
 <% end %>
