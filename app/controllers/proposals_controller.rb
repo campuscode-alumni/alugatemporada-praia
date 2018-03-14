@@ -22,6 +22,11 @@ class ProposalsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @proposal = Proposal.find(params[:id])
+
 
   end
 end
