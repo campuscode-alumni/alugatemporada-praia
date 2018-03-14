@@ -3,7 +3,13 @@ require 'rails_helper'
 feature 'Owner register property' do
   scenario 'successfully' do
 
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+
     visit root_path
+    click_on 'Área do proprietário'
+    fill_in 'E-mail', with: 'proprietario@email.com'
+    fill_in 'Senha', with: '123456'
+    click_on 'Entrar'
 
     click_on 'Registrar imóvel'
 

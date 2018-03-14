@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :properties do
         resources :proposals
   end
-
+  
 end
