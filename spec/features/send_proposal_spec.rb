@@ -2,11 +2,12 @@ require 'rails_helper'
 
 feature 'user send proposal' do
   scenario 'open form' do
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
     property = Property.create(title: 'Casa charmosa em Ubatuba', property_type: 'casa',
             description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Ubatuba',
             rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
             total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
-            daily_rate: '300.00')
+            daily_rate: '300.00', owner: owner1)
 
     visit root_path
     click_on property.title
@@ -29,11 +30,12 @@ feature 'user send proposal' do
   end
 
   scenario 'all fields are required' do
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
     property = Property.create(title: 'Casa charmosa em Ubatuba', property_type: 'casa',
             description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Ubatuba',
             rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
             total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
-            daily_rate: '300.00')
+            daily_rate: '300.00', owner: owner1)
 
     visit root_path
     click_on property.title

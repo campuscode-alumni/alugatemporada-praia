@@ -2,13 +2,16 @@ require 'rails_helper'
 
 feature 'Visitor view property details' do
   scenario 'successfully' do
-    property = Property.create(title: 'Casa charmosa em Ubatuba', property_type: 'casa',
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    property = Property.create!(title: 'Casa charmosa em Ubatuba', property_type: 'casa',
               description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Ubatuba',
               rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
               total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
-              daily_rate: '300.00')
+              daily_rate: '300.00', owner: owner1)
 
-    visit property_path(property)
+    visit root_path
+
+    click_on property.title
 
     expect(page).to have_css('h1', text: property.title)
     expect(page).to have_css('h3', text: property.property_type)

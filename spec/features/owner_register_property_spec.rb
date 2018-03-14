@@ -43,8 +43,12 @@ feature 'Owner register property' do
   end
 
   scenario 'and dont fill all inputs' do
-
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
     visit root_path
+    click_on 'Área do proprietário'
+    fill_in 'E-mail', with: 'proprietario@email.com'
+    fill_in 'Senha', with: '123456'
+    click_on 'Entrar'
 
     click_on 'Registrar imóvel'
 
@@ -55,8 +59,12 @@ feature 'Owner register property' do
   end
 
   scenario 'and dont fill title' do
-
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
     visit root_path
+    click_on 'Área do proprietário'
+    fill_in 'E-mail', with: 'proprietario@email.com'
+    fill_in 'Senha', with: '123456'
+    click_on 'Entrar'
 
     click_on 'Registrar imóvel'
 
