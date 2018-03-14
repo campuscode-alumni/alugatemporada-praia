@@ -5,10 +5,16 @@ class UnavailableRange < ApplicationRecord
   belongs_to :property
 
   validate :conflit_date
+
+  private
+
   def conflit_date
-    busca_inicial_date = :property.where()
-    if :start_date >
-      errors.add(:base, "can't be in the past")
+    if start_date && end_date && property
+      x = property.unavailable_ranges.where("start_date < ? AND end_date >= ?", start_date, start_date)
+      if x.any?
+        errors.add(:base, "esse período já está indisponível")
+      end
     end
   end
+
 end
