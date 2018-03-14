@@ -15,5 +15,5 @@ class Property < ApplicationRecord
   has_many :proposals
   belongs_to :owner
   has_many :price_ranges
-
+  has_many :unavailable_ranges
 end

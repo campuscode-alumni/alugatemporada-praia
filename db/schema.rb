@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 20180314222108) do
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
+  create_table "unavailable_ranges", force: :cascade do |t|
+    t.string "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "property_id"
+    t.index ["property_id"], name: "index_unavailable_ranges_on_property_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
