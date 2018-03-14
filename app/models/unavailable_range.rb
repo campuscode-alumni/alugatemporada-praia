@@ -10,11 +10,10 @@ class UnavailableRange < ApplicationRecord
 
   def conflit_date
     if start_date && end_date && property
-      x = property.unavailable_ranges.where("start_date < ? AND end_date >= ?", start_date, start_date)
+      x = property.unavailable_ranges.where("(start_date < ? AND end_date >= ?) OR (start_date > ? AND end_date >= ?)", start_date, start_date, start_date, start_date)
       if x.any?
-        errors.add(:base, "esse período já está indisponível")
+        errors.add(:base, "Este período já está cadastrado")
       end
     end
   end
-
 end

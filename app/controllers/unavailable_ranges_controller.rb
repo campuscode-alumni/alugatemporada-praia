@@ -10,9 +10,10 @@ class UnavailableRangesController < ApplicationController
     @property = Property.find(params[:property_id])
     @unavailable_range = @property.unavailable_ranges.build(range_params)
     if @unavailable_range.valid?
-      redirect_to property_path(@unavailable_range.property_id)
+      @unavailable_range.save
+      redirect_to property_path(@property.id)
     else
-      flash[:notice] = "Preencha todos os campos"
+      flash[:notice] = "Ops algo está errado."
       render :new
     end
   end
