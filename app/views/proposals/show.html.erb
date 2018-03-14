@@ -1,0 +1,14 @@
+<h3>Proposta #<%= @proposal.property.id%></h3>
+<h5><%= @proposal.property.title %></h5>
+<ul>
+  <li>Nome: <%= @proposal.user.name %></li>
+  <li>Email: <%= @proposal.user.email %></li>
+  <li>Telefone: <%= @proposal.user.phone %></li>
+  <li>Finalidade do aluguel: <%= @proposal.rent_purpose %></li>
+  <li>Data Início: <%= @proposal.start_date %></li>
+  <li>Data Fim: <%= @proposal.end_date%></li>
+  <li>Número de hóspedes: <%= @proposal.maximum_guests %></li>
+  <li>Possui fumantes? <%= @proposal.smoking_allowed? %></li>
+  <li>Possui animais? <%= @proposal.petfriendly? %></li>
+  <li><p>Detalhes da proposta: <%= @proposal.proposal_details %></p></li>
+</ul>

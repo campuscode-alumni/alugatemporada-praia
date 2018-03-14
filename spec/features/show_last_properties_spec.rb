@@ -40,7 +40,7 @@ feature 'show last 10 Properties' do
 
     expect(page).to have_css('h3', text: 'Casa no campo')
     expect(page).to have_css('p', text: '300,00 por dia')
-    expect(page).to have_css('p', text: 'Acomoda 8 pessoas')
+    expect(page).to have_css('p', text: 'Acomoda no máximo 8 pessoas')
     expect(page).to have_css('p', text: 'Ubatuba')
 
     expect(page).not_to have_css('h3', text: 'Não encontramos nenhum imóvel cadastrado')

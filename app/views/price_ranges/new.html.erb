@@ -1,0 +1,22 @@
+<p><%= flash[:error] %></p>
+
+<h1>Cadastrar Preço Temporada</h1>
+<%= form_for([@property, @price_range]) do |f| %>
+  <div>
+    <%= f.label :description, 'Nome da temporada:' %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :start_date, 'Data início: ' %>
+    <%= f.date_field :start_date %>
+  </div>
+  <div>
+    <%= f.label :end_date, 'Data fim: ' %>
+    <%= f.date_field :end_date %>
+  </div>
+  <div>
+    <%= f.label :daily_rate, 'Preço base/ dia da temporada: ' %>
+    <%= f.number_field :daily_rate %>
+  </div>
+    <%= f.submit 'Cadastrar' %>
+<% end %>

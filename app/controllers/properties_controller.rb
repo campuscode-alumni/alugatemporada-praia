@@ -2,6 +2,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find params[:id]
+    @price_ranges = @property.price_ranges
   end
 
   def search
@@ -10,6 +11,7 @@ class PropertiesController < ApplicationController
 
     @properties = Property.where('property_location = ? ', @location)
   end
+
 
   def new
     @property = Property.new
@@ -40,5 +42,12 @@ class PropertiesController < ApplicationController
   def my_properties
     @owner = current_owner
     @my_properties = @owner.properties
+    @properties = Property.all
   end
+
+  def my_proposals
+    @user = current_user
+    @my_proposals = @user.proposals
+  end
+
 end

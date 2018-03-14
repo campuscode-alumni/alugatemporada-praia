@@ -7,6 +7,7 @@ class ProposalsController < ApplicationController
   def create
 
     @property = Property.find params[:property_id]
+    @user = current_user
 
     proposal_params = params.require(:proposal).permit(:name, :email, :phone,
     :rent_purpose, :maximum_guests, :start_date, :end_date, :petfriendly,
@@ -14,11 +15,16 @@ class ProposalsController < ApplicationController
 
     @proposal = Proposal.new(proposal_params)
     @proposal.property = @property
+    @proposal.user_id = @user.id
+    @proposal.phone = @user.phone
     if @proposal.save
       redirect_to property_path(@property.id)
     else
       render :new
     end
-    
+  end
+
+  def show
+    @proposal = Proposal.find(params[:id])
   end
 end

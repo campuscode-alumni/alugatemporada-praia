@@ -20,7 +20,7 @@ feature 'owner sees properties' do
 
     expect(page).to have_content 'Casa maravilhosa em Ubatuba'
     expect(page).to have_content 'R$ 300,00 por dia'
-    expect(page).to have_content 'Acomoda 8 pessoas'
+    expect(page).to have_content 'Acomoda no máximo 8 pessoas'
     expect(page).to have_content 'Ubatuba'
 
   end

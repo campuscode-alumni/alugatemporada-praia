@@ -1,0 +1,13 @@
+<h1>Minhas propostas</h1>
+<% if @my_proposals.any?  %>
+  <% @my_proposals.each do |proposal| %>
+    <h4><%= link_to proposal.property.title, property_proposal_path(proposal.id, proposal.property.id) %></h4>
+    <ul>
+      <li><%= proposal.rent_purpose %></li>
+      <li><%= proposal.start_date %></li>
+      <li><%= proposal.end_date %></li>
+    </ul>
+  <% end %>
+<% else %>
+    <p>Você ainda não possui propostas.</p>
+<% end  %>

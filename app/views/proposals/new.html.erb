@@ -4,16 +4,14 @@
 
 <%= form_for ([@property, @proposal]) do |f| %>
   <div>
-    <%= f.label :name, 'Nome:' %>
-    <%= f.text_field :name %>
+    <%= f.label :name, "Nome: #{current_user.name}" %>
   </div>
   <div>
-    <%= f.label :email, 'E-mail:' %>
-    <%= f.text_field :email %>
+    <%= f.label :email, "E-mail: #{current_user.email}" %>
   </div>
   <div>
     <%= f.label :phone, 'Telefone:' %>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, value: current_user.phone %>
   </div>
   <div>
     <%= f.label :rent_purpose, 'Finalidade:' %>

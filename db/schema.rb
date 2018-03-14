@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20180314222108) do
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
+  create_table "price_ranges", force: :cascade do |t|
+    t.string "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "daily_rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "property_id"
+    t.index ["property_id"], name: "index_price_ranges_on_property_id"
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string "title"
     t.integer "maximum_guests"
@@ -51,8 +62,6 @@ ActiveRecord::Schema.define(version: 20180314222108) do
   end
 
   create_table "proposals", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
     t.string "phone"
     t.string "rent_purpose"
     t.integer "maximum_guests"
@@ -64,7 +73,29 @@ ActiveRecord::Schema.define(version: 20180314222108) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "property_id"
+    t.integer "user_id"
+    t.string "email"
     t.index ["property_id"], name: "index_proposals_on_property_id"
+    t.index ["user_id"], name: "index_proposals_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
