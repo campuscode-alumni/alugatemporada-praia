@@ -29,7 +29,6 @@ feature 'User view your proposals' do
     click_on 'Minhas propostas'
 
     #Expectativa
-    expect(page).to have_css('h1', text: "Bem vindo #{user.email}")
     expect(page).to have_css('h4', text: proposal.property.title)
     expect(page).to have_css('li', text: proposal.rent_purpose)
     expect(page).to have_css('li', text: proposal.start_date)
