@@ -5,7 +5,6 @@ class PriceRange < ApplicationRecord
   validate :end_date_smaller_than_start_date, if: :dates_blank?
   validate :exist_price_range
 
-
   def dates_blank?
     start_date && end_date
   end
@@ -17,13 +16,19 @@ class PriceRange < ApplicationRecord
   end
 
   def exist_price_range
-    exist_price_range = property.price_ranges.where("(start_date <= ? or end_date >= ?)
-       and (start_date >= ? or end_date <= ?)
-       ", start_date, start_date, end_date, end_date)
+    exist_price_range = property.price_ranges.where("(start_date between ? and ?) or (end_date between ? and ?)
+    or (? between start_date and end_date) or (? between start_date and end_date)
+       ", start_date, end_date, start_date, end_date, start_date, end_date)
 
     if exist_price_range.any?
         errors.add(:exist_price_range, 'A data informada já consta cadastrada em outra temporada')
     end
   end
+
+
 end
+# exist_price_range = property.price_ranges.where("(start_date <= ? or end_date >= ?)
+#    or (start_date >= ? or end_date <= ?)
+#    ", start_date, start_date, end_date, end_date)
+
 #or (start_date between ? and ? or end_date between ? and ?)

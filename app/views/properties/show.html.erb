@@ -17,8 +17,6 @@
 
 <%= link_to 'Envie uma proposta', new_property_proposal_path(@property) %>
 
-<p> Valor da diária R$ <%= @property.daily_rate %></p>
-
 <h3>Preços por temporada</h3>
 <%= link_to 'Cadastrar preço', new_property_price_range_path(@property.id) %>
 
@@ -26,8 +24,8 @@
 
 <h4><%= price.description %></h4>
 <ul>
-  <li>Valor diária: <%= price.daily_rate %></li>
-  <li>Data início: <%= price.start_date %></li>
-  <li>Data fim: <%= price.end_date %></li>
+  <li>Valor diária: <%= number_to_currency(price.daily_rate, unit: "R$ ", separator: ",", delimiter: "") %></li>
+  <li>Data início: <%= price.start_date.strftime("%d/%m/%Y") %></li>
+  <li>Data fim: <%= price.end_date.strftime("%d/%m/%Y") %></li>
 </ul>
 <% end  %>
