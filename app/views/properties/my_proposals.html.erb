@@ -4,8 +4,10 @@
     <h4><%= link_to proposal.property.title, property_proposal_path(proposal.id, proposal.property.id) %></h4>
     <ul>
       <li><%= proposal.rent_purpose %></li>
-      <li><%= proposal.start_date %></li>
-      <li><%= proposal.end_date %></li>
+      <li><%= proposal.start_date.strftime("%d/%m/%Y") %></li>
+      <li><%= proposal.end_date.strftime("%d/%m/%Y") %></li>
+      <li><%= number_to_currency(proposal.value, unit: "R$ ",
+        separator: ",", delimiter: "") %> </li>
     </ul>
   <% end %>
 <% else %>
