@@ -16,7 +16,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     @proposal.property = @property
     @proposal.user_id = @user.id
-    @proposal.phone = @user.phone
+    
     if @proposal.save
       redirect_to property_path(@property.id)
     else
@@ -26,5 +26,8 @@ class ProposalsController < ApplicationController
 
   def show
     @proposal = Proposal.find(params[:id])
+
+
+
   end
 end

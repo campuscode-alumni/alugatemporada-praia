@@ -38,3 +38,17 @@
 
 
 <%= link_to 'Envie uma proposta', new_property_proposal_path(@property) %>
+
+<h3> Propostas recebidas: </h3>
+<% @property.proposals.each do |proposal| %>
+
+  <p> Telefone: <%= proposal.phone %></p>
+  <p> Finalidade: <%= proposal.rent_purpose %></p>
+  <p> Quantidade de hóspedes: <%= proposal.maximum_guests %></p>
+  <p> Data de entrada: <%= proposal.start_date.strftime("%d/%m/%Y")  %></p>
+  <p> Data de saída: <%= proposal.end_date.strftime("%d/%m/%Y") %></p>
+  <p> <%= proposal.petfriendly ? 'Pretendo levar pets' : 'Não pretendo levar pets' %></p>
+  <p> <%= proposal.smoking_allowed ? 'Fumantes' : 'Não fumantes' %></p>
+  <p> Outras informações: <%= proposal.proposal_details %></p>
+
+<% end %>
