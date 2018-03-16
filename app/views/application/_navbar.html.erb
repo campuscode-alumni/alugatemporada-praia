@@ -1,0 +1,21 @@
+<div>
+  <%= link_to 'Home', root_path %>
+</div>
+<% if user_signed_in? %>
+  <div>
+    <%= link_to 'Meus imóveis', my_properties_properties_path %>
+  </div>
+  <div>
+    <%= link_to 'Registrar imóvel', new_property_path %>
+  </div>
+  <div>
+    <%= link_to 'Minhas propostas', my_proposals_properties_path %>
+  </div>
+  <div>
+    <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+  </div>
+<% else  %>
+  <% if !current_page?(new_user_session_path) %>
+    <%= link_to 'Entrar', new_user_session_path %>
+  <% end  %>
+<% end %>

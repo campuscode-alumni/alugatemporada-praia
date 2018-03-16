@@ -3,6 +3,9 @@ require 'rails_helper'
 feature 'Owner add price range' do
   scenario 'successfully' do
     #criar os dados
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
@@ -13,6 +16,10 @@ feature 'Owner add price range' do
 
     #navegação
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
 
     click_on 'Meus imóveis'
     click_on property.title
@@ -34,6 +41,9 @@ feature 'Owner add price range' do
   end
 
   scenario 'and must fill all fields' do
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
@@ -44,6 +54,10 @@ feature 'Owner add price range' do
 
     #navegação
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
 
     click_on 'Meus imóveis'
     click_on property.title
@@ -61,6 +75,9 @@ feature 'Owner add price range' do
 
   scenario 'and dont allow add other date that conflict with end_date' do
     #criar os dados
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
@@ -75,6 +92,11 @@ feature 'Owner add price range' do
 
     #navegação
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
+
     click_on 'Meus imóveis'
     click_on property.title
 
@@ -91,6 +113,9 @@ feature 'Owner add price range' do
 
   scenario 'and dont allow add other date that conflict with start_date' do
     #criar os dados
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
@@ -105,6 +130,10 @@ feature 'Owner add price range' do
 
     #navegação
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
     click_on 'Meus imóveis'
     click_on property.title
 
@@ -121,6 +150,9 @@ feature 'Owner add price range' do
 
   scenario 'and dont allow add inside other range' do
     #criar os dados
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
@@ -135,6 +167,10 @@ feature 'Owner add price range' do
 
     #navegação
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
     click_on 'Meus imóveis'
     click_on property.title
 
@@ -151,6 +187,9 @@ feature 'Owner add price range' do
 
   scenario 'and dont allow add a range that contains other' do
     #criar os dados
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
@@ -165,6 +204,10 @@ feature 'Owner add price range' do
 
     #navegação
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
     click_on 'Meus imóveis'
     click_on property.title
 
@@ -181,6 +224,9 @@ feature 'Owner add price range' do
 
   scenario 'and dont allow end_date be smaller than start_date' do
     #criar os dados
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
@@ -191,6 +237,10 @@ feature 'Owner add price range' do
 
     #navegação
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
     click_on 'Meus imóveis'
     click_on property.title
 

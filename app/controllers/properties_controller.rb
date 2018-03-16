@@ -9,7 +9,11 @@ class PropertiesController < ApplicationController
     @location = params[:property_location]
     @image = "teste.jpg"
 
-    @properties = Property.where('property_location = ? ', @location)
+    if @location.include?('Todos')
+      @properties = Property.all
+    else
+      @properties = Property.where('property_location = ? ', @location)
+    end
   end
 
 

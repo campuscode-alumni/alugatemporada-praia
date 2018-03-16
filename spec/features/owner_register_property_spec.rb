@@ -3,7 +3,14 @@ require 'rails_helper'
 feature 'Owner register property' do
   scenario 'successfully' do
 
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
 
     click_on 'Registrar imóvel'
 
@@ -38,7 +45,14 @@ feature 'Owner register property' do
 
   scenario 'and dont fill all inputs' do
 
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
 
     click_on 'Registrar imóvel'
 
@@ -50,7 +64,14 @@ feature 'Owner register property' do
 
   scenario 'and dont fill title' do
 
+    user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
+      phone: '+5511912345678')
+          
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: user.email
+    fill_in 'Senha', with: user.password
+    click_on 'Entrar'
 
     click_on 'Registrar imóvel'
 

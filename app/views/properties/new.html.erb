@@ -17,7 +17,7 @@
   </div>
   <div>
     <%= f.label :description, 'Descrição' %>
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
   </div>
   <div>
     <%= f.label :property_location, 'Localização' %>
@@ -41,23 +41,23 @@
   </div>
   <div>
     <%= f.label :total_rooms, 'Total de quartos' %>
-    <%= f.text_field :total_rooms %>
+    <%= f.number_field :total_rooms %>
   </div>
   <div>
     <%= f.label :maximum_guests, 'Número máximo de hóspedes' %>
-    <%= f.text_field :maximum_guests %>
+    <%= f.number_field :maximum_guests %>
   </div>
   <div>
     <%= f.label :minimum_rent, 'Número minimo de dias para locação' %>
-    <%= f.text_field :minimum_rent %>
+    <%= f.number_field :minimum_rent %>
   </div>
   <div>
     <%= f.label :maximum_rent, 'Número máximo de dias para locação' %>
-    <%= f.text_field :maximum_rent %>
+    <%= f.number_field :maximum_rent %>
   </div>
   <div>
     <%= f.label :daily_rate, 'Valor da diária' %>
-    <%= f.text_field :daily_rate %>
+    <%= f.number_field :daily_rate %>
   </div>
   <div>
     <%= f.submit 'Salvar' %>

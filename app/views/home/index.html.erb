@@ -1,18 +1,5 @@
 <h1>Bem vindo ao Aluga Temporada</h1>
 
-<div>
-  <%= link_to 'Meus imóveis', my_properties_properties_path %>
-</div>
-<% if user_signed_in? %>
-  <%= link_to 'Minhas propostas', my_proposals_properties_path %>
-<% else  %>
-  <%= link_to 'Entrar', new_user_session_path %>
-<% end %>
-
-<div>
-  <%= link_to 'Registrar imóvel', new_property_path %>
-</div>
-
 <%= form_tag search_properties_path, method: "get" do%>
   <%= label_tag :property_location, "Localização" %>
   <%= select_tag(:property_location, options_for_select(@locations))%>

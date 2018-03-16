@@ -23,9 +23,11 @@ feature 'User view your proposals' do
     #Navegação
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password
-    click_on 'Entrar'
+    within('form') do
+      fill_in 'Email', with: user.email
+      fill_in 'Senha', with: user.password
+      click_on 'Entrar'
+    end
     click_on 'Minhas propostas'
 
     #Expectativa
