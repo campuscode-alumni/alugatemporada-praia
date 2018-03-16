@@ -30,20 +30,15 @@ class ProposalsController < ApplicationController
 
   private
   def calculate_value proposal
-    price = 0.0
+    price = 0
     if proposal.valid?
       (proposal.start_date.to_date..proposal.end_date.to_date).each do |selected_date|
         proposal_range = proposal.property.price_ranges.where("start_date <= ? AND end_date >= ?", selected_date, selected_date )
         if proposal_range.any?
-          puts 1000
-          puts proposal_range.daily_rate
-          price = price + proposal_range.daily_rate
+          price = price + proposal_range.first.daily_rate
         else
-          puts 300
-          puts proposal.property.daily_rate
           price = price + proposal.property.daily_rate
         end
-        puts price
       end
     end
     price
