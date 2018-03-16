@@ -10,5 +10,7 @@
   <li>Número de hóspedes: <%= @proposal.maximum_guests %></li>
   <li>Possui fumantes? <%= @proposal.smoking_allowed? %></li>
   <li>Possui animais? <%= @proposal.petfriendly? %></li>
+  <li>Valor da proposta: <%= number_to_currency(@proposal.value, unit: "R$ ",
+    separator: ",", delimiter: "") %></li>
   <li><p>Detalhes da proposta: <%= @proposal.proposal_details %></p></li>
 </ul>

@@ -5,7 +5,6 @@ class ProposalsController < ApplicationController
   end
 
   def create
-
     @property = Property.find params[:property_id]
     @user = current_user
 
@@ -31,16 +30,22 @@ class ProposalsController < ApplicationController
 
   private
   def calculate_value proposal
-    price_range = proposal.property.price_ranges.where(start_date: (start_date..end_date))
-    if price_range.any?
-      start_date_rang_days = price_range.start_date - proposal.start_date
-      end_date_rang_days = price_range.end_date - proposal.end_date
-      if start_date_rang_days < 0
-        start_date_rang_days = 0
-      end
-      if end_date_rang_days < 0
-        end_date_rang_days = 0
+    price = 0.0
+    if proposal.valid?
+      (proposal.start_date.to_date..proposal.end_date.to_date).each do |selected_date|
+        proposal_range = proposal.property.price_ranges.where("start_date <= ? AND end_date >= ?", selected_date, selected_date )
+        if proposal_range.any?
+          puts 1000
+          puts proposal_range.daily_rate
+          price = price + proposal_range.daily_rate
+        else
+          puts 300
+          puts proposal.property.daily_rate
+          price = price + proposal.property.daily_rate
+        end
+        puts price
       end
     end
+    price
   end
 end
