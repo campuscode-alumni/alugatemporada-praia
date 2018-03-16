@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'owner accepts proposal' do
   scenario 'successfully' do
-    pending
     #criar os dados
     owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
 
@@ -34,5 +33,6 @@ feature 'owner accepts proposal' do
     click_on property.title
     click_on 'Aceitar proposta'
 
+    expect(page).to have_css('p', text: 'Proposta aprovada')
   end
 end
