@@ -6,9 +6,6 @@
     <%= link_to 'Meus imóveis', my_properties_properties_path %>
   </div>
   <div>
-    <%= link_to 'Registrar imóvel', new_property_path %>
-  </div>
-  <div>
     <%= link_to 'Minhas propostas', my_proposals_properties_path %>
   </div>
   <div>
@@ -18,4 +15,17 @@
   <% if !current_page?(new_user_session_path) %>
     <%= link_to 'Entrar', new_user_session_path %>
   <% end  %>
+<% end %>
+
+<% if owner_signed_in? %>
+  <div>
+    <%= link_to 'Meus imóveis', my_properties_properties_path %>
+  </div>
+  <div>
+    <%= link_to 'Registrar imóvel', new_property_path %>
+  </div>
+<% else %>
+  <div>
+    <%= link_to 'Área do proprietário', new_owner_session_path %>
+  </div>
 <% end %>

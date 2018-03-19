@@ -1,6 +1,4 @@
 class Property < ApplicationRecord
-
-
   validates :title, presence: { message: 'Você deve preencher o título.'}
   validates :property_type, presence: { message: 'Você deve preencher o campo tipo da propriedade.'}
   validates :description, presence: { message: 'Você deve preencher o campo descrição.'}
@@ -13,6 +11,7 @@ class Property < ApplicationRecord
   validates :daily_rate, presence: { message: 'Você deve preencher o campo valor da diária.'}
 
   has_many :proposals
+  belongs_to :owner
   has_many :price_ranges
-
+  has_many :unavailable_ranges
 end

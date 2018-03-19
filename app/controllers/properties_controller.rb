@@ -22,7 +22,11 @@ class PropertiesController < ApplicationController
   end
 
   def create
+
     @property = Property.new(property_params)
+    @property.owner = current_owner
+
+    #@property = current_owner.properties.build(property_params)
 
     if @property.save
       redirect_to @property
@@ -40,6 +44,8 @@ class PropertiesController < ApplicationController
   end
 
   def my_properties
+    @owner = current_owner
+    @my_properties = @owner.properties
     @properties = Property.all
   end
 
