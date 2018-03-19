@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'User view your proposals' do
   scenario 'successfully' do
     #Criação dos dados
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
     user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
       phone: '+5511912345678')
 
@@ -12,7 +13,7 @@ feature 'User view your proposals' do
             property_location: 'Ubatuba', rent_purpose: 'férias',
             accessibility: true, petfriendly: true, smoking_allowed: false,
             total_rooms: '2', maximum_guests: '8', minimum_rent: '5',
-            maximum_rent: '30', daily_rate: '300.00')
+            maximum_rent: '30', daily_rate: '300.00', owner: owner1)
 
     proposal = Proposal.create(property: property, user_id: user.id,
       email: user.email, phone: user.phone,
@@ -23,9 +24,11 @@ feature 'User view your proposals' do
     #Navegação
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password
-    click_on 'Entrar'
+    within('form') do
+      fill_in 'E-mail', with: user.email
+      fill_in 'Senha', with: user.password
+      click_on 'Entrar'
+    end
     click_on 'Minhas propostas'
 
     #Expectativa
@@ -37,6 +40,7 @@ feature 'User view your proposals' do
 
   scenario 'and view more details' do
     #Criação dos dados
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
     user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
       phone: '+5511912345678')
 
@@ -46,7 +50,7 @@ feature 'User view your proposals' do
             property_location: 'Ubatuba', rent_purpose: 'férias',
             accessibility: true, petfriendly: true, smoking_allowed: false,
             total_rooms: '2', maximum_guests: '8', minimum_rent: '5',
-            maximum_rent: '30', daily_rate: '300.00')
+            maximum_rent: '30', daily_rate: '300.00', owner: owner1)
 
     proposal = Proposal.create(property: property, user_id: user.id,
       email: user.email, phone: user.phone,
@@ -57,7 +61,7 @@ feature 'User view your proposals' do
     #Navegação
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
+    fill_in 'E-mail', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Entrar'
     click_on 'Minhas propostas'
@@ -80,6 +84,7 @@ feature 'User view your proposals' do
 
   scenario "and view message if haven't none" do
     #Criação dos dados
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
     user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
       phone: '+5511912345678')
 
@@ -89,12 +94,12 @@ feature 'User view your proposals' do
             property_location: 'Ubatuba', rent_purpose: 'férias',
             accessibility: true, petfriendly: true, smoking_allowed: false,
             total_rooms: '2', maximum_guests: '8', minimum_rent: '5',
-            maximum_rent: '30', daily_rate: '300.00')
+            maximum_rent: '30', daily_rate: '300.00', owner: owner1)
 
     #Navegação
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
+    fill_in 'E-mail', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Entrar'
     click_on 'Minhas propostas'

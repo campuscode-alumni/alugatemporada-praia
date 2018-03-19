@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315003346) do
+ActiveRecord::Schema.define(version: 20180318230025) do
+
+  create_table "owners", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "owner_name"
+    t.string "name"
+    t.string "phone"
+    t.index ["email"], name: "index_owners_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
+  end
 
   create_table "price_ranges", force: :cascade do |t|
     t.string "description"
@@ -39,6 +59,8 @@ ActiveRecord::Schema.define(version: 20180315003346) do
     t.boolean "petfriendly"
     t.boolean "smoking_allowed"
     t.boolean "accessibility"
+    t.integer "owner_id"
+    t.index ["owner_id"], name: "index_properties_on_owner_id"
   end
 
   create_table "proposals", force: :cascade do |t|

@@ -4,17 +4,19 @@ feature 'Visitor list properties by location' do
   scenario 'successfully' do
     #criar os dados
     location = "Maresias"
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner2 = Owner.create(email: 'proprietario2@email.com', password: '123456')
     property = Property.create(title: "Casa em Maresias - Pé na areia", property_type: 'casa',
       description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Maresias',
       rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
       total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
-      daily_rate: '300.00')
+      daily_rate: '300.00', owner: owner1)
 
     other_property = Property.create(title: "Casa em Maresias c/ piscina", property_type: 'casa',
       description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Maresias',
       rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
       total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
-      daily_rate: '300.00')
+      daily_rate: '300.00', owner: owner2)
 
     #navegação
     visit root_path
@@ -40,17 +42,19 @@ feature 'Visitor list properties by location' do
   scenario "and dont show property of other location" do
     #criar os dados
     location = "Maresias"
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner2 = Owner.create(email: 'proprietario2@email.com', password: '123456')
     property = Property.create(title: "Casa em Maresias - Pé na areia", property_type: 'casa',
       description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Maresias',
       rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
       total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
-      daily_rate: '300.00')
+      daily_rate: '300.00', owner: owner1)
 
     other_property = Property.create(title: "Casa em Maresias c/ piscina", property_type: 'casa',
       description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Santos',
       rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
       total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
-      daily_rate: '300.00')
+      daily_rate: '300.00', owner: owner2)
 
     #navegação
     visit root_path

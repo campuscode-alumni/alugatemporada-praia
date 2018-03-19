@@ -1,4 +1,9 @@
 <p><%= flash[:error] %></p>
+<% if @price_range.errors.any? %>
+  <% @price_range.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
 
 <h1>Cadastrar Preço Temporada</h1>
 <%= form_for([@property, @price_range]) do |f| %>

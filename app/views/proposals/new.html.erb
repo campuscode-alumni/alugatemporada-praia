@@ -19,7 +19,7 @@
   </div>
   <div>
     <%= f.label :maximum_guests, 'Quantidade de hóspedes:' %>
-    <%= f.text_field :maximum_guests %>
+    <%= f.number_field :maximum_guests %>
   </div>
   <div>
     <%= f.label :start_date, 'Data de entrada:' %>
@@ -39,7 +39,7 @@
   </div>
   <div>
     <%= f.label :proposal_details, 'Outras informações:' %>
-    <%= f.text_field :proposal_details %>
+    <%= f.text_area :proposal_details %>
   </div>
   <%= f.submit 'Enviar proposta' %>
 <% end %>

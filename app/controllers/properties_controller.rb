@@ -9,7 +9,11 @@ class PropertiesController < ApplicationController
     @location = params[:property_location]
     @image = "teste.jpg"
 
-    @properties = Property.where('property_location = ? ', @location)
+    if @location.include?('Todos')
+      @properties = Property.all
+    else
+      @properties = Property.where('property_location = ? ', @location)
+    end
   end
 
 
@@ -18,7 +22,11 @@ class PropertiesController < ApplicationController
   end
 
   def create
+
     @property = Property.new(property_params)
+    @property.owner = current_owner
+
+    #@property = current_owner.properties.build(property_params)
 
     if @property.save
       redirect_to @property
@@ -36,6 +44,8 @@ class PropertiesController < ApplicationController
   end
 
   def my_properties
+    @owner = current_owner
+    @my_properties = @owner.properties
     @properties = Property.all
   end
 

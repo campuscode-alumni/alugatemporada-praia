@@ -5,11 +5,16 @@ feature 'Calculate proposal' do
     user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
       phone: '+5511912345678')
 
-    property = Property.create(title: 'Casa charmosa em Ubatuba',
-      property_type: 'casa', description: 'Casa nova, com quartos climatizados e wi-fi',
-      property_location: 'Ubatuba', rent_purpose: 'férias', accessibility: true,
-      petfriendly: true, smoking_allowed: false, total_rooms: '2',
-      maximum_guests: '8', minimum_rent: '5', maximum_rent: '30', daily_rate: '300.00')
+    owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+      password: '123456', phone: '+5511912345678')
+
+    property = Property.create!(title: "Casa em Maresias - Pé na areia",
+      property_type: 'casa',
+      maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
+      daily_rate: 450, rent_purpose: "Lazer", property_location: "Maresias",
+      description: 'Casa nova, com quartos climatizados e wi-fi',
+      accessibility: true, petfriendly: true, smoking_allowed: false,
+      total_rooms: '2', owner: owner1)
 
     price_range = PriceRange.create(description: "Carnaval",
       start_date: "13/02/2019", end_date: "16/02/2019", daily_rate: 1000,
@@ -17,7 +22,7 @@ feature 'Calculate proposal' do
 
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
+    fill_in 'E-mail', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Entrar'
     click_on property.title
@@ -46,11 +51,16 @@ feature 'Calculate proposal' do
       user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
         phone: '+5511912345678')
 
-      property = Property.create(title: 'Casa charmosa em Ubatuba',
-        property_type: 'casa', description: 'Casa nova, com quartos climatizados e wi-fi',
-        property_location: 'Ubatuba', rent_purpose: 'férias', accessibility: true,
-        petfriendly: true, smoking_allowed: false, total_rooms: '2',
-        maximum_guests: '8', minimum_rent: '5', maximum_rent: '30', daily_rate: '300.00')
+      owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+        password: '123456', phone: '+5511912345678')
+
+      property = Property.create!(title: "Casa em Maresias - Pé na areia",
+        property_type: 'casa',
+        maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
+        daily_rate: 300, rent_purpose: "Lazer", property_location: "Maresias",
+        description: 'Casa nova, com quartos climatizados e wi-fi',
+        accessibility: true, petfriendly: true, smoking_allowed: false,
+        total_rooms: '2', owner: owner1)
 
       price_range = PriceRange.create(description: "Carnaval",
         start_date: "13/02/2019", end_date: "16/02/2019", daily_rate: 1000,
@@ -58,7 +68,7 @@ feature 'Calculate proposal' do
 
       visit root_path
       click_on 'Entrar'
-      fill_in 'Email', with: user.email
+      fill_in 'E-mail', with: user.email
       fill_in 'Senha', with: user.password
       click_on 'Entrar'
       click_on property.title
@@ -88,11 +98,16 @@ feature 'Calculate proposal' do
         user = User.create(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
           phone: '+5511912345678')
 
-        property = Property.create(title: 'Casa charmosa em Ubatuba',
-          property_type: 'casa', description: 'Casa nova, com quartos climatizados e wi-fi',
-          property_location: 'Ubatuba', rent_purpose: 'férias', accessibility: true,
-          petfriendly: true, smoking_allowed: false, total_rooms: '2',
-          maximum_guests: '8', minimum_rent: '5', maximum_rent: '30', daily_rate: '300.00')
+        owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+          password: '123456', phone: '+5511912345678')
+
+        property = Property.create!(title: "Casa em Maresias - Pé na areia",
+          property_type: 'casa',
+          maximum_guests: 10, minimum_rent: 2, maximum_rent: 30,
+          daily_rate: 300, rent_purpose: "Lazer", property_location: "Maresias",
+          description: 'Casa nova, com quartos climatizados e wi-fi',
+          accessibility: true, petfriendly: true, smoking_allowed: false,
+          total_rooms: '2', owner: owner1)
 
         price_range = PriceRange.create(description: "Carnaval",
           start_date: "13/02/2019", end_date: "16/02/2019", daily_rate: 1000,
@@ -100,7 +115,7 @@ feature 'Calculate proposal' do
 
         visit root_path
         click_on 'Entrar'
-        fill_in 'Email', with: user.email
+        fill_in 'E-mail', with: user.email
         fill_in 'Senha', with: user.password
         click_on 'Entrar'
         click_on property.title

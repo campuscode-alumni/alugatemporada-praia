@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'show last 10 Properties' do
   scenario 'successfully' do
+
     apartamento = create_prop('Apartamento na praia de Jurerê')
     casa = create_prop('Casa na praia de pipa')
     create_prop('Casa no campo')
@@ -39,7 +40,7 @@ feature 'show last 10 Properties' do
 
     expect(page).to have_css('h3', text: 'Casa no campo')
     expect(page).to have_css('p', text: '300,00 por dia')
-    expect(page).to have_css('p', text: 'Acomoda 8 pessoas')
+    expect(page).to have_css('p', text: 'Acomoda no máximo 8 pessoas')
     expect(page).to have_css('p', text: 'Ubatuba')
 
     expect(page).not_to have_css('h3', text: 'Não encontramos nenhum imóvel cadastrado')
@@ -52,10 +53,11 @@ feature 'show last 10 Properties' do
   end
 
   def create_prop(title)
+    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
     Property.create(title: title, property_type: 'casa',
               description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Ubatuba',
               rent_purpose: 'férias', accessibility: true, petfriendly: true, smoking_allowed: false,
               total_rooms: '2', maximum_guests: '8', minimum_rent: '5', maximum_rent: '30',
-              daily_rate: '300.00')
+              daily_rate: '300.00', owner: owner1)
   end
 end
