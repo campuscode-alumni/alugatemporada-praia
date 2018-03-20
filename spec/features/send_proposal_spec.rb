@@ -6,7 +6,7 @@ feature 'user send proposal' do
     owner1 = Owner.create!(email: 'proprietario@email.com', password: '123456')
 
     user = User.create!(name: 'Joao Almeida', email: 'joaoalmeida@campuscode.com.br', password: '123456',
-      phone: '+5511912345678')
+      phone: '11-987654321')
 
     property = Property.create!(title: 'Casa charmosa em Ubatuba', property_type: 'casa',
             description: 'Casa nova, com quartos climatizados e wi-fi', property_location: 'Ubatuba',

@@ -33,7 +33,7 @@ feature 'owner accepts proposal' do
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
     end
-    
+
     click_on 'Meus imóveis'
     click_on property.title
     click_on 'Aceitar proposta'
