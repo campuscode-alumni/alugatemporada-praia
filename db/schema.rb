@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20180320003138) do
     t.integer "user_id"
     t.string "email"
     t.integer "status", default: 0
+    t.decimal "value"
+
     t.index ["property_id"], name: "index_proposals_on_property_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end

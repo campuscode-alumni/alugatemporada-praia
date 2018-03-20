@@ -34,8 +34,8 @@ feature 'User view your proposals' do
     #Expectativa
     expect(page).to have_css('h4', text: proposal.property.title)
     expect(page).to have_css('li', text: proposal.rent_purpose)
-    expect(page).to have_css('li', text: proposal.start_date)
-    expect(page).to have_css('li', text: proposal.end_date)
+    expect(page).to have_css('li', text: '30/12/2019')
+    expect(page).to have_css('li', text: '01/01/2020')
   end
 
   scenario 'and view more details' do
