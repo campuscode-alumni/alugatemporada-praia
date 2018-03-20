@@ -14,7 +14,6 @@ class ProposalsController < ApplicationController
 
     @proposal = @property.proposals.new(proposal_params)
     @proposal.user = current_user
-    @proposal.phone = @user.phone
     @proposal.value = calculate_value @proposal
 
     if @proposal.save
