@@ -24,6 +24,6 @@ feature 'Visitor view property details' do
     expect(page).to have_css('p', text: "#{property.total_rooms} quartos")
     expect(page).to have_css('p', text: "Número máximo de hóspedes: #{property.maximum_guests}")
     expect(page).to have_css('p', text: "Locação de #{property.minimum_rent} a #{property.maximum_rent} dias")
-    expect(page).to have_css('p', text: "Valor da diária R$ 300,00")
+    expect(page).to have_css('p', text: "Valor da diária: R$ 300,00")
   end
 end

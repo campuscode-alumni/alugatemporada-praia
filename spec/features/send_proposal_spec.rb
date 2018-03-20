@@ -16,7 +16,7 @@ feature 'user send proposal' do
 
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
+    fill_in 'E-mail', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Entrar'
     click_on property.title
@@ -34,7 +34,7 @@ feature 'user send proposal' do
 
     expect(current_path).to eq(property_path(property))
 
-    expect(page).to have_css('h3', text: 'Propostas recebidas:')
+    expect(page).to have_css('h3', text: 'Proposta enviada:')
     expect(page).to have_content('11-987654321')
     expect(page).to have_content('Feriado e final de semana')
     expect(page).to have_content('5')
@@ -60,7 +60,7 @@ feature 'user send proposal' do
 
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
+    fill_in 'E-mail', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Entrar'
     click_on property.title

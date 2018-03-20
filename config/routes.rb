@@ -14,10 +14,10 @@ Rails.application.routes.draw do
     resources :price_ranges, only: [:new, :create]
     resources :unavailable_ranges, only: [:new, :create]
     get 'search', on: :collection
-    #get 'my_properties', on: :collection
+    get 'my_properties', on: :collection
     get 'my_proposals', on: :collection
   end
-  get 'my_properties', to: 'properties#my_properties', as: 'my_properties'
+  
   resources :price_ranges, only: [:show]
 
 end

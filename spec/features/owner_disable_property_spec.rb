@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'Owner disable a property' do
   scenario 'successfully' do
-    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+      password: '123456', phone: '+5511912345678')
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       description: 'Casa nova, com quartos climatizados e wi-fi',
@@ -13,9 +14,11 @@ feature 'Owner disable a property' do
 
     visit root_path
     click_on 'Área do proprietário'
-    fill_in 'E-mail', with: 'proprietario@email.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
+    within('form') do
+      fill_in 'E-mail', with: 'proprietario@email.com'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
     click_on 'Meus imóveis'
     click_on property.title
 
@@ -36,7 +39,8 @@ feature 'Owner disable a property' do
   end
 
   scenario 'and must fill all fields' do
-    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+      password: '123456', phone: '+5511912345678')
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       description: 'Casa nova, com quartos climatizados e wi-fi',
@@ -47,9 +51,11 @@ feature 'Owner disable a property' do
 
     visit root_path
     click_on 'Área do proprietário'
-    fill_in 'E-mail', with: 'proprietario@email.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
+    within('form') do
+      fill_in 'E-mail', with: 'proprietario@email.com'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
     click_on 'Meus imóveis'
 
     click_on property.title
@@ -66,7 +72,8 @@ feature 'Owner disable a property' do
   end
 
   scenario 'and date range is unique' do
-    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+      password: '123456', phone: '+5511912345678')
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       description: 'Casa nova, com quartos climatizados e wi-fi',
@@ -80,9 +87,11 @@ feature 'Owner disable a property' do
 
     visit root_path
     click_on 'Área do proprietário'
-    fill_in 'E-mail', with: 'proprietario@email.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
+    within('form') do
+      fill_in 'E-mail', with: 'proprietario@email.com'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
     click_on 'Meus imóveis'
 
     click_on property.title
@@ -99,7 +108,8 @@ feature 'Owner disable a property' do
   end
 
   scenario 'and date range is unique' do
-    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+      password: '123456', phone: '+5511912345678')
     property = Property.create(title: "Casa em Maresias - Pé na areia",
       property_type: 'casa',
       description: 'Casa nova, com quartos climatizados e wi-fi',
@@ -113,9 +123,11 @@ feature 'Owner disable a property' do
 
     visit root_path
     click_on 'Área do proprietário'
-    fill_in 'E-mail', with: 'proprietario@email.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
+    within('form') do
+      fill_in 'E-mail', with: 'proprietario@email.com'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
     click_on 'Meus imóveis'
 
     click_on property.title

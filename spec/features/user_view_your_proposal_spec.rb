@@ -24,9 +24,11 @@ feature 'User view your proposals' do
     #Navegação
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password
-    click_on 'Entrar'
+    within('form') do
+      fill_in 'E-mail', with: user.email
+      fill_in 'Senha', with: user.password
+      click_on 'Entrar'
+    end
     click_on 'Minhas propostas'
 
     #Expectativa
@@ -59,7 +61,7 @@ feature 'User view your proposals' do
     #Navegação
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
+    fill_in 'E-mail', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Entrar'
     click_on 'Minhas propostas'
@@ -97,7 +99,7 @@ feature 'User view your proposals' do
     #Navegação
     visit root_path
     click_on 'Entrar'
-    fill_in 'Email', with: user.email
+    fill_in 'E-mail', with: user.email
     fill_in 'Senha', with: user.password
     click_on 'Entrar'
     click_on 'Minhas propostas'

@@ -16,7 +16,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     @proposal.property = @property
     @proposal.user_id = @user.id
-    
+
     if @proposal.save
       redirect_to property_path(@property.id)
     else
@@ -27,7 +27,15 @@ class ProposalsController < ApplicationController
   def show
     @proposal = Proposal.find(params[:id])
 
-
-
   end
+
+  def accept
+    @proposal = Proposal.find(params[:id])
+    @proposal.accepted!
+    if @proposal.accepted?
+      flash[:notice] = "Proposta aceita com sucesso!"
+      render :show
+    end
+  end
+
 end

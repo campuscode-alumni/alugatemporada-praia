@@ -3,14 +3,16 @@ require 'rails_helper'
 feature 'Owner register property' do
   scenario 'successfully' do
 
-    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+      password: '123456', phone: '+5511912345678')
 
     visit root_path
     click_on 'Área do proprietário'
-    fill_in 'E-mail', with: 'proprietario@email.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
-
+    within('form') do
+      fill_in 'E-mail', with: 'proprietario@email.com'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
     click_on 'Registrar imóvel'
 
     fill_in 'Título', with: 'Casa charmosa em Ubatuba'
@@ -39,17 +41,19 @@ feature 'Owner register property' do
     expect(page).to have_css('p', text: "2 quartos")
     expect(page).to have_css('p', text: "Número máximo de hóspedes: 8")
     expect(page).to have_css('p', text: "Locação de 5 a 30 dias")
-    expect(page).to have_css('p', text: "Valor da diária R$ 300,00")
+    expect(page).to have_css('p', text: "Valor da diária: R$ 300,00")
   end
 
   scenario 'and dont fill all inputs' do
-    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+      password: '123456', phone: '+5511912345678')
     visit root_path
     click_on 'Área do proprietário'
-    fill_in 'E-mail', with: 'proprietario@email.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
-
+    within('form') do
+      fill_in 'E-mail', with: 'proprietario@email.com'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
     click_on 'Registrar imóvel'
 
     click_on 'Salvar'
@@ -59,13 +63,15 @@ feature 'Owner register property' do
   end
 
   scenario 'and dont fill title' do
-    owner1 = Owner.create(email: 'proprietario@email.com', password: '123456')
+    owner1 = Owner.create(name: 'Joao Almeida', email: 'proprietario@email.com',
+      password: '123456', phone: '+5511912345678')
     visit root_path
     click_on 'Área do proprietário'
-    fill_in 'E-mail', with: 'proprietario@email.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
-
+    within('form') do
+      fill_in 'E-mail', with: 'proprietario@email.com'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
     click_on 'Registrar imóvel'
 
     fill_in 'Tipo da propriedade', with: 'Casa'

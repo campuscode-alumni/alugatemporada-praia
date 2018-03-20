@@ -5,7 +5,7 @@
     <img src="<%= @image %> " />
   </div>
   <div class="property-details">
-    <h3><%= property.title %></h3>
+    <h3><%= link_to property.title, property_path(property) %></h3>
     <ul>
       <li>Diária: <%= property.daily_rate %></li>
       <li>Máx. Hospedes: <%= property.maximum_guests %></li>

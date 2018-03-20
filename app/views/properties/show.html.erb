@@ -12,44 +12,58 @@
 <p> Número máximo de hóspedes: <%= @property.maximum_guests %></p>
 <p> Locação de <%= @property.minimum_rent %> a <%= @property.maximum_rent %> dias</p>
 
-<p> Valor da diária <%= number_to_currency(@property.daily_rate, unit: "R$ ",
-  separator: ",", delimiter: "") %></p>
+<p> Valor da diária: <%= number_to_currency(@property.daily_rate, unit: "R$ ",
+  separator: ",", delimiter: "") %> por dia</p>
 
-<h3>Preços por temporada</h3>
-<%= link_to 'Cadastrar preço', new_property_price_range_path(@property.id) %>
+<% if user_signed_in? %>
+  <%= link_to 'Envie uma proposta', new_property_proposal_path(@property) %>
+<% elsif owner_signed_in? %>
+    <h3>Preços por temporada</h3>
+    <%= link_to 'Cadastrar preço', new_property_price_range_path(@property.id) %>
 
-<% @price_ranges.each do |price| %>
-<h4><%= price.description %></h4>
-<ul>
-  <li>Valor diária: <%= price.daily_rate %></li>
-  <li>Data início: <%= price.start_date %></li>
-  <li>Data fim: <%= price.end_date %></li>
-</ul>
-<% end  %>
+    <% @price_ranges.each do |price| %>
+      <h4><%= price.description %></h4>
+      <ul>
+        <li>Valor diária: <%= number_to_currency(price.daily_rate, unit: "R$ ", separator: ",", delimiter: "") %></li>
+        <li>Data início: <%= price.start_date.strftime("%d/%m/%Y") %></li>
+        <li>Data fim: <%= price.end_date.strftime("%d/%m/%Y") %></li>
+      </ul>
+    <% end  %>
 
-<%= link_to 'Cadastrar indisponibilidade', new_property_unavailable_range_path(@property.id) %>
-
-<h3>Período indisponível</h3>
-<% @property.unavailable_ranges.each do | range | %>
-  <p><b> Motivo: <%= range.description %> </b></p>
-  <p> <%= range.start_date.strftime("%d/%m/%Y") %> </p>
-  <p> <%= range.end_date.strftime("%d/%m/%Y") %> </p>
+    <% if owner_signed_in? %>
+      <%= link_to 'Cadastrar indisponibilidade', new_property_unavailable_range_path(@property.id) %>
+    <% end %>
+    <h3>Período indisponível</h3>
+    <% @property.unavailable_ranges.each do | range | %>
+      <p><b> Motivo: <%= range.description %> </b></p>
+      <p> <%= range.start_date.strftime("%d/%m/%Y") %> </p>
+      <p> <%= range.end_date.strftime("%d/%m/%Y") %> </p>
+    <% end %>
 <% end %>
 
+<% if owner_signed_in? || user_signed_in? %>
+  <h3>
+    <% if owner_signed_in? %>
+      Propostas recebidas:
+    <% elsif user_signed_in?%>
+      Proposta enviada:
+    <% end %>
+  </h3>
 
-<%= link_to 'Envie uma proposta', new_property_proposal_path(@property) %>
+  <% @property.proposals.each do |proposal| %>
+    <div id='proposal-<%= proposal.id %>'>
+      <p> Telefone: <%= proposal.phone %></p>
+      <p> Finalidade: <%= proposal.rent_purpose %></p>
+      <p> Quantidade de hóspedes: <%= proposal.maximum_guests %></p>
+      <p> Data de entrada: <%= proposal.start_date.strftime("%d/%m/%Y")  %></p>
+      <p> Data de saída: <%= proposal.end_date.strftime("%d/%m/%Y") %></p>
+      <p> <%= proposal.petfriendly ? 'Pretendo levar pets' : 'Não pretendo levar pets' %></p>
+      <p> <%= proposal.smoking_allowed ? 'Fumantes' : 'Não fumantes' %></p>
+      <p> Outras informações: <%= proposal.proposal_details %></p>
+      <%= link_to 'Aceitar proposta', accept_property_proposal_path(@property, proposal), method: :post %>
+    </div>
+  <% end %>
 
-<h3> Propostas recebidas: </h3>
-<% @property.proposals.each do |proposal| %>
-
-  <p> Telefone: <%= proposal.phone %></p>
-  <p> Finalidade: <%= proposal.rent_purpose %></p>
-  <p> Quantidade de hóspedes: <%= proposal.maximum_guests %></p>
-  <p> Data de entrada: <%= proposal.start_date.strftime("%d/%m/%Y")  %></p>
-  <p> Data de saída: <%= proposal.end_date.strftime("%d/%m/%Y") %></p>
-  <p> <%= proposal.petfriendly ? 'Pretendo levar pets' : 'Não pretendo levar pets' %></p>
-  <p> <%= proposal.smoking_allowed ? 'Fumantes' : 'Não fumantes' %></p>
-  <p> Outras informações: <%= proposal.proposal_details %></p>
-
-  <%= link_to 'Aceitar proposta', accept_property_proposal_path(@property, proposal), method: :post %>
 <% end %>
+
+  <%= link_to 'Voltar', :back %>
