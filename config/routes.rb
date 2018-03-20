@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     get 'my_properties', on: :collection
     get 'my_proposals', on: :collection
   end
-  
+
   resources :price_ranges, only: [:show]
+
+  scope modulo: 'owner' do
+    get 'my_profile/:id', to: 'profile#show', as: 'my_profile'
+  end
 
 end
