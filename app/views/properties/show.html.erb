@@ -50,11 +50,11 @@
     <% end %>
   </h3>
 
-  <% @property.proposals.each do |proposal| %>
+  <% @property.proposals.not_rejected.each do |proposal| %>
     <p><%= link_to "Proposta ##{proposal.id}", property_proposal_path(proposal.property,proposal) %></p>
     <p> Nome: <%= proposal.user.name %> </p>
     <p> Telefone: <%= proposal.phone %></p>
-    <p> Qtde de hóspedes: <%= proposal.maximum_guests %></p>    
+    <p> Qtde de hóspedes: <%= proposal.maximum_guests %></p>
     <p> Data de entrada: <%= proposal.start_date.strftime("%d/%m/%Y")  %></p>
     <p> Data de saída: <%= proposal.end_date.strftime("%d/%m/%Y") %></p>
   <% end %>

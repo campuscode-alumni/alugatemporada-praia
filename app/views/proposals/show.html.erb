@@ -12,3 +12,6 @@
   <li>Possui animais? <%= @proposal.petfriendly? %></li>
   <li><p>Detalhes da proposta: <%= @proposal.proposal_details %></p></li>
 </ul>
+<div>
+  <%= button_to "Rejeitar", property_proposal_reject_path(@proposal.property, @proposal) %>
+</div>

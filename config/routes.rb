@@ -8,14 +8,16 @@ Rails.application.routes.draw do
 
   #get '/price_range/new', to: 'price_range#new', as:'new_price_range'
   resources :properties do
-    resources :proposals
+    resources :proposals do
+      post 'reject'
+    end
     resources :price_ranges, only: [:new, :create]
     resources :unavailable_ranges, only: [:new, :create]
     get 'search', on: :collection
     get 'my_properties', on: :collection
     get 'my_proposals', on: :collection
   end
-  
+
   resources :price_ranges, only: [:show]
 
 end

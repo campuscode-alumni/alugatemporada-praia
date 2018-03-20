@@ -1,4 +1,10 @@
 class Proposal < ApplicationRecord
+  enum status: { pending: 0, accepted: 1, rejected: 2 }
+
+  scope :not_rejected, -> {
+    where.not(status: :rejected)
+  }
+
   belongs_to :property
   belongs_to :user
   validates :phone, :rent_purpose, :maximum_guests,

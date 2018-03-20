@@ -36,7 +36,7 @@ feature 'Owner reject proposal' do
     click_on 'Meus imóveis'
     click_on property.title
     click_on "Proposta ##{proposal.id}"
-    click_on 'Rejeitar proposta'
+    click_on 'Rejeitar'
 
     #Expectativa
     expect(page).to have_content("Proposta rejeitada com sucesso")

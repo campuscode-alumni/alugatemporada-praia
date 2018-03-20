@@ -5,20 +5,17 @@ class ProposalsController < ApplicationController
   end
 
   def create
-
     @property = Property.find params[:property_id]
-    @user = current_user
 
     proposal_params = params.require(:proposal).permit(:name, :email, :phone,
     :rent_purpose, :maximum_guests, :start_date, :end_date, :petfriendly,
     :smoking_allowed, :proposal_details)
 
-    @proposal = Proposal.new(proposal_params)
-    @proposal.property = @property
-    @proposal.user_id = @user.id
-    
+    @proposal = @property.proposals.new(proposal_params)
+    @proposal.user = current_user
+
     if @proposal.save
-      redirect_to property_path(@property.id)
+      redirect_to property_path @property
     else
       render :new
     end
@@ -26,8 +23,16 @@ class ProposalsController < ApplicationController
 
   def show
     @proposal = Proposal.find(params[:id])
+  end
 
-
-
+  def reject
+    proposal = Proposal.find(params[:proposal_id])
+    if proposal.rejected!
+      flash[:notice] = 'Proposta rejeitada com sucesso'
+      redirect_to property_path(proposal.property)
+    else
+      flash[:notice] = "Não foi possível rejeitar a proposta #{proposal.id}"
+      render :show
+    end
   end
 end
