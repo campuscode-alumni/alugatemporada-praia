@@ -60,6 +60,7 @@
       <p> <%= proposal.petfriendly ? 'Pretendo levar pets' : 'Não pretendo levar pets' %></p>
       <p> <%= proposal.smoking_allowed ? 'Fumantes' : 'Não fumantes' %></p>
       <p> Outras informações: <%= proposal.proposal_details %></p>
+      <p> Status da proposta: <%= t("status.#{proposal.status}") %></p>
       <%= link_to 'Aceitar proposta', accept_property_proposal_path(@property, proposal), method: :post %>
     </div>
   <% end %>

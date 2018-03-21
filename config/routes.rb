@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   #get '/price_range/new', to: 'price_range#new', as:'new_price_range'
   resources :properties do
-    resources :proposals do
+    resources :proposals do 
       post 'accept', on: :member
     end
     resources :price_ranges, only: [:new, :create]
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'my_properties', on: :collection
     get 'my_proposals', on: :collection
   end
-  
+
   resources :price_ranges, only: [:show]
 
 end

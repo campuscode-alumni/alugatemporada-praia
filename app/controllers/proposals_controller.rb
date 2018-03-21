@@ -31,10 +31,23 @@ class ProposalsController < ApplicationController
 
   def accept
     @proposal = Proposal.find(params[:id])
+    @property = Property.find(params[:property_id])
     @proposal.accepted!
-    if @proposal.accepted?
-      flash[:notice] = "Proposta aceita com sucesso!"
-      render :show
+    reject_other_proposals(@proposal, @property)
+    flash[:notice] = "Proposta aceita com sucesso!"
+    redirect_to @property
+  end
+
+  private
+
+  def reject_other_proposals(accepted_proposal, property)
+    property.proposals.pending.each do | proposal |
+      if (proposal.start_date <= accepted_proposal.start_date && proposal.end_date >= accepted_proposal.start_date) ||
+         (proposal.start_date <= accepted_proposal.end_date && proposal.end_date >= accepted_proposal.end_date) ||
+         (proposal.start_date <= accepted_proposal.start_date && proposal.end_date >= accepted_proposal.end_date) ||
+         (proposal.start_date >= accepted_proposal.start_date && proposal.end_date <= accepted_proposal.end_date) 
+        proposal.rejected!
+      end
     end
   end
 
