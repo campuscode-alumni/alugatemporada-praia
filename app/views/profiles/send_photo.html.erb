@@ -1,0 +1,6 @@
+<h1>Enviar sua foto</h1>
+<%= form_for @user, url: profile_save_photo_path(current_user), html: { multipart: true } do |form| %>
+  <%= form.label :image, 'Image'%>
+  <%= form.file_field :image, as: :file %>
+  <%= form.submit 'Upload' %>
+<% end %>

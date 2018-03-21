@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320003138) do
+ActiveRecord::Schema.define(version: 20180321001057) do
 
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(version: 20180320003138) do
     t.string "email"
     t.integer "status", default: 0
     t.decimal "value"
-
     t.index ["property_id"], name: "index_proposals_on_property_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
@@ -109,6 +108,10 @@ ActiveRecord::Schema.define(version: 20180320003138) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

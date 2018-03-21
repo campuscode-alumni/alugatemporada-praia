@@ -20,4 +20,8 @@ Rails.application.routes.draw do
 
   resources :price_ranges, only: [:show]
 
+  resources :profiles, only: [:show] do
+    get 'send_photo'
+    patch 'save_photo'
+  end
 end

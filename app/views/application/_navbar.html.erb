@@ -3,6 +3,9 @@
 </div>
 <% if user_signed_in? %>
   <div>
+    <%= link_to 'Perfil', profile_path(current_user) %>
+  </div>
+  <div>
     <%= link_to 'Meus imóveis', my_properties_properties_path %>
   </div>
   <div>
