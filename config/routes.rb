@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   scope modulo: 'owner' do
     get 'my_profile/:id', to: 'profile#show', as: 'my_profile'
+    get 'edit_profile/:id', to: 'profile#edit', as: 'edit_profile'
   end
 
 end

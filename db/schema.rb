@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318230025) do
+ActiveRecord::Schema.define(version: 20180320192901) do
 
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 20180318230025) do
     t.string "owner_name"
     t.string "name"
     t.string "phone"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_owners_on_email", unique: true
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
@@ -78,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180318230025) do
     t.integer "user_id"
     t.string "email"
     t.decimal "value"
+    t.integer "status", default: 0
     t.index ["property_id"], name: "index_proposals_on_property_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end

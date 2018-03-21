@@ -5,7 +5,6 @@ feature 'Owner add a photo' do
       password: '123456', phone: '+5511912345678')
 
     visit root_path
-    visit root_path
     click_on 'Área do proprietário'
     within('form') do
       fill_in 'E-mail', with: 'proprietario@email.com'
@@ -15,10 +14,15 @@ feature 'Owner add a photo' do
     click_on 'Meu perfil'
     click_on 'Editar perfil'
 
-    attach_file('Imagem', '../support/fixture/teste.png')
+    fill_in 'Confirmação da senha', with: '123456'
+
+    attach_file('Imagem', Rails.root.join('spec', 'support', 'fixtures', 'teste.png'))
 
     click_on 'Salvar'
 
-    expect(page).to have_xpath("//img[@src='teste.png']")
+    click_on 'Meu perfil'
+
+    #expect(page).to have_xpath("//img[@src='teste.png']")
+    expect(page).to have_css("img[src*='teste.png']")
   end
 end

@@ -1,0 +1,12 @@
+<h1>Meu perfil</h1>
+
+<%= @owner.email %>
+<br>
+<%= @owner.name %>
+<br>
+<%= @owner.phone %>
+<br>
+
+<%= image_tag @owner.avatar.url %>
+
+<%= link_to 'Editar perfil', edit_owner_registration_path %>
